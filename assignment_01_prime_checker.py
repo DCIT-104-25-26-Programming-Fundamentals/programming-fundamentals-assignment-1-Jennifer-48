@@ -35,3 +35,23 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def is_prime(number: int) -> bool:
+    """Checks if a given whole number is prime."""
+    if number < 2:
+        return False
+
+    # Check divisors up to the square root of the number
+    for i in range(2, int(number**0.5) + 1):
+        if number % i == 0:
+            return False
+
+    return True
+
+
+if __name__ == "__main__":
+    user_input = int(input("Enter a number: "))
+
+    if is_prime(user_input):
+        print(f"{user_input} is a prime number.")
+    else:
+        print(f"{user_input} is NOT a prime number.")
