@@ -1,4 +1,4 @@
-# =============================================================================
+#===========================================================
 # PROGRAMMING FUNDAMENTALS — Assignment 6
 # Topic: Loops and Functions
 # =============================================================================
@@ -55,3 +55,64 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# ===========================================# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 6
+# Topic: Loops and Functions
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# PART A — Single Table
+# -----------------------------------------------------------------------------
+def print_single_table(num):
+    """Prints the multiplication table for a given number from 1 to 12."""
+    if num <= 0:
+        print("Error: Number must be a positive integer.")
+        return
+
+    print(f"\nMultiplication Table for {num}:")
+    for i in range(1, 13):
+        print(f"{num:2}  x  {i:2}  =  {num * i:3}")
+
+
+# -----------------------------------------------------------------------------
+# PART B — Bonus: Tables from 1 to N
+# -----------------------------------------------------------------------------
+def print_tables_up_to_n(n):
+    """Prints multiplication tables for all numbers from 1 to N."""
+    if n <= 0:
+        print("Error: Number must be a positive integer.")
+        return
+
+    for current in range(1, n + 1):
+        print_single_table(current)
+        if current < n:
+            print("-" * 27)
+
+
+# -----------------------------------------------------------------------------
+# MAIN PROGRAM DRIVER
+# -----------------------------------------------------------------------------
+def main():
+    print("=== MULTIPLICATION TABLE GENERATOR ===\n")
+
+    # --- PART A DEMO ---
+    print("--- PART A: Single Table ---")
+    try:
+        num = int(input("Enter a number: "))
+        print_single_table(num)
+    except ValueError:
+        print("Error: Invalid input. Please enter a positive integer.")
+
+    print("\n" + "=" * 40 + "\n")
+
+    # --- PART B DEMO ---
+    print("--- PART B: Tables from 1 to N ---")
+    try:
+        n = int(input("Enter N: "))
+        print_tables_up_to_n(n)
+    except ValueError:
+        print("Error: Invalid input. Please enter a positive integer.")
+
+
+if __name__ == "__main__":
+    main()
