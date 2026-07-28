@@ -79,3 +79,85 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 7
+# Topic: Interactive Console Applications, Lists, and Functions
+# =============================================================================
+
+def display_menu():
+    """Displays the main menu options."""
+    print("\n============================")
+    print("      TO-DO LIST MENU       ")
+    print("============================")
+    print("1. Add task")
+    print("2. View tasks")
+    print("3. Delete task")
+    print("4. Quit")
+
+
+def add_task(tasks):
+    """Prompts the user for a task description and adds it to the list."""
+    task_desc = input("Enter task: ").strip()
+    if task_desc:
+        tasks.append(task_desc)
+        print(f'Task added: "{task_desc}"')
+    else:
+        print("Error: Task description cannot be empty.")
+
+
+def view_tasks(tasks):
+    """Displays all current tasks numbered from 1, or a message if empty."""
+    if not tasks:
+        print("\nYour to-do list is empty!")
+        return
+
+    print("\nYour Tasks:")
+    for index, task in enumerate(tasks, start=1):
+        print(f"{index}. {task}")
+
+
+def delete_task(tasks):
+    """Displays tasks, prompts for a task number, and removes it safely."""
+    if not tasks:
+        print("\nNo tasks to delete. Your to-do list is empty!")
+        return
+
+    view_tasks(tasks)
+    
+    try:
+        task_num = int(input("\nEnter task number to delete: "))
+        
+        # Validate task number range (1 to len(tasks))
+        if 1 <= task_num <= len(tasks):
+            removed_task = tasks.pop(task_num - 1)
+            print(f'Task "{removed_task}" has been removed.')
+        else:
+            print(f"Error: Please enter a number between 1 and {len(tasks)}.")
+            
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid task number.")
+
+
+def main():
+    """Main execution loop for the To-Do List Application."""
+    tasks = []
+
+    while True:
+        display_menu()
+        choice = input("Enter your choice (1-4): ").strip()
+
+        if choice == "1":
+            add_task(tasks)
+        elif choice == "2":
+            view_tasks(tasks)
+        elif choice == "3":
+            delete_task(tasks)
+        elif choice == "4":
+            print("\nGoodbye!")
+            break
+        else:
+            print("\nInvalid choice! Please select a number between 1 and 4.")
+
+
+if __name__ == "__main__":
+    main()
